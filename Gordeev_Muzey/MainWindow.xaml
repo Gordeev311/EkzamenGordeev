@@ -1,0 +1,40 @@
+﻿<Window x:Class="Gordeev_Muzey.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Gordeev_Muzey"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="LightPink">
+            <TextBlock Text="Музей имени святого проскурина максима"  Foreground="White" HorizontalAlignment="Center"
+                       VerticalAlignment="Center" FontSize="32"/>
+        </Grid>
+        <DataGrid x:Name="DtGridMyzey" Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Экспонат ID" Binding="{Binding ExponatID}" Width="80*"/>
+                <DataGridTextColumn Header="Название экспоната" Binding="{Binding NazvanieExponata}" Width="80*"/>
+                <DataGridTextColumn Header="Дата привоза" Binding="{Binding PrivozDate}" Width="80*"/>
+                <DataGridTextColumn Header="Место нахождения" Binding="{Binding MestoNaxojdeniya}" Width="80*"/>
+                <DataGridTemplateColumn Width="auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Редактировать" Name="BtnEdit" Click="BtnEdit_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Frame x:Name="FrmMain" Grid.Row="1"   NavigationUIVisibility="Hidden"/>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" >
+            <Button Content="Удалить" Name="BtnDel" Click="BtnDel_Click" Style="{StaticResource buttonDel}" />
+            <Button Content="Добавить" Name="BtnAdd" Click="BtnAdd_Click" Style="{StaticResource buttonAdd}" />
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище Gordeev_MuzeyModelContainer" CdmEntityContainer="MuzeyEntities">
+    <EntitySetMapping Name="Exsponati">
+      <EntityTypeMapping TypeName="Gordeev_MuzeyModel.Exsponati">
+        <MappingFragment StoreEntitySet="Exsponati">
+          <ScalarProperty Name="ExponatID" ColumnName="ExponatID" />
+          <ScalarProperty Name="NazvanieExponata" ColumnName="NazvanieExponata" />
+          <ScalarProperty Name="Cena" ColumnName="Cena" />
+          <ScalarProperty Name="KolvoLet" ColumnName="KolvoLet" />
+          <ScalarProperty Name="GdeNashli" ColumnName="GdeNashli" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Oxrana">
+      <EntityTypeMapping TypeName="Gordeev_MuzeyModel.Oxrana">
+        <MappingFragment StoreEntitySet="Oxrana">
+          <ScalarProperty Name="OxranaID" ColumnName="OxranaID" />
+          <ScalarProperty Name="NameGlavnogo" ColumnName="NameGlavnogo" />
+          <ScalarProperty Name="NachaloRaboti" ColumnName="NachaloRaboti" />
+          <ScalarProperty Name="Staj" ColumnName="Staj" />
+          <ScalarProperty Name="Pol" ColumnName="Pol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Posetiteli">
+      <EntityTypeMapping TypeName="Gordeev_MuzeyModel.Posetiteli">
+        <MappingFragment StoreEntitySet="Posetiteli">
+          <ScalarProperty Name="PosetitelID" ColumnName="PosetitelID" />
+          <ScalarProperty Name="PokupkaID" ColumnName="PokupkaID" />
+          <ScalarProperty Name="Pol" ColumnName="Pol" />
+          <ScalarProperty Name="Vosrast" ColumnName="Vosrast" />
+          <ScalarProperty Name="CelPoxoda" ColumnName="CelPoxoda" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sklad">
+      <EntityTypeMapping TypeName="Gordeev_MuzeyModel.Sklad">
+        <MappingFragment StoreEntitySet="Sklad">
+          <ScalarProperty Name="SkladID" ColumnName="SkladID" />
+          <ScalarProperty Name="ExponatID" ColumnName="ExponatID" />
+          <ScalarProperty Name="NazvanieExponata" ColumnName="NazvanieExponata" />
+          <ScalarProperty Name="PrivozDate" ColumnName="PrivozDate" />
+          <ScalarProperty Name="MestoNaxojdeniya" ColumnName="MestoNaxojdeniya" />
+          <ScalarProperty Name="OxranaID" ColumnName="OxranaID" />
+          <ScalarProperty Name="SotrudnikiID" ColumnName="SotrudnikiID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sotrudniki">
+      <EntityTypeMapping TypeName="Gordeev_MuzeyModel.Sotrudniki">
+        <MappingFragment StoreEntitySet="Sotrudniki">
+          <ScalarProperty Name="SotrudnikID" ColumnName="SotrudnikID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="Staj" ColumnName="Staj" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="Gordeev_MuzeyModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

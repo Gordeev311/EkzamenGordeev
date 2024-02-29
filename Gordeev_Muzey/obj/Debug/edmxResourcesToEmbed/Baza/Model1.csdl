@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Gordeev_MuzeyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Exsponati">
+    <Key>
+      <PropertyRef Name="ExponatID" />
+    </Key>
+    <Property Name="ExponatID" Type="Int32" Nullable="false" />
+    <Property Name="NazvanieExponata" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cena" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="KolvoLet" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="GdeNashli" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Posetiteli" Relationship="Self.FK__Posetitel__Pokup__2D27B809" FromRole="Exsponati" ToRole="Posetiteli" />
+    <NavigationProperty Name="Sklad" Relationship="Self.FK__Sklad__ExponatID__286302EC" FromRole="Exsponati" ToRole="Sklad" />
+  </EntityType>
+  <EntityType Name="Oxrana">
+    <Key>
+      <PropertyRef Name="OxranaID" />
+    </Key>
+    <Property Name="OxranaID" Type="Int32" Nullable="false" />
+    <Property Name="NameGlavnogo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NachaloRaboti" Type="DateTime" Precision="0" />
+    <Property Name="Staj" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Pol" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Posetiteli">
+    <Key>
+      <PropertyRef Name="PosetitelID" />
+    </Key>
+    <Property Name="PosetitelID" Type="Int32" Nullable="false" />
+    <Property Name="PokupkaID" Type="Int32" />
+    <Property Name="Pol" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Vosrast" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="CelPoxoda" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Exsponati" Relationship="Self.FK__Posetitel__Pokup__2D27B809" FromRole="Posetiteli" ToRole="Exsponati" />
+  </EntityType>
+  <EntityType Name="Sklad">
+    <Key>
+      <PropertyRef Name="SkladID" />
+    </Key>
+    <Property Name="SkladID" Type="Int32" Nullable="false" />
+    <Property Name="ExponatID" Type="Int32" />
+    <Property Name="NazvanieExponata" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="PrivozDate" Type="DateTime" Precision="0" />
+    <Property Name="MestoNaxojdeniya" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="OxranaID" Type="Int32" />
+    <Property Name="SotrudnikiID" Type="Int32" />
+    <NavigationProperty Name="Exsponati" Relationship="Self.FK__Sklad__ExponatID__286302EC" FromRole="Sklad" ToRole="Exsponati" />
+    <NavigationProperty Name="Sotrudniki" Relationship="Self.FK_Sklad_Sotrudniki" FromRole="Sklad" ToRole="Sotrudniki" />
+  </EntityType>
+  <EntityType Name="Sotrudniki">
+    <Key>
+      <PropertyRef Name="SotrudnikID" />
+    </Key>
+    <Property Name="SotrudnikID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nationality" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="BirthDate" Type="DateTime" Precision="0" />
+    <Property Name="Staj" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Sklad" Relationship="Self.FK_Sklad_Sotrudniki" FromRole="Sotrudniki" ToRole="Sklad" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK__Posetitel__Pokup__2D27B809">
+    <End Role="Exsponati" Type="Self.Exsponati" Multiplicity="0..1" />
+    <End Role="Posetiteli" Type="Self.Posetiteli" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Exsponati">
+        <PropertyRef Name="ExponatID" />
+      </Principal>
+      <Dependent Role="Posetiteli">
+        <PropertyRef Name="PokupkaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Sklad__ExponatID__286302EC">
+    <End Role="Exsponati" Type="Self.Exsponati" Multiplicity="0..1" />
+    <End Role="Sklad" Type="Self.Sklad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Exsponati">
+        <PropertyRef Name="ExponatID" />
+      </Principal>
+      <Dependent Role="Sklad">
+        <PropertyRef Name="ExponatID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sklad_Sotrudniki">
+    <End Role="Sotrudniki" Type="Self.Sotrudniki" Multiplicity="0..1" />
+    <End Role="Sklad" Type="Self.Sklad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sotrudniki">
+        <PropertyRef Name="SotrudnikID" />
+      </Principal>
+      <Dependent Role="Sklad">
+        <PropertyRef Name="SotrudnikiID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MuzeyEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Exsponati" EntityType="Self.Exsponati" />
+    <EntitySet Name="Oxrana" EntityType="Self.Oxrana" />
+    <EntitySet Name="Posetiteli" EntityType="Self.Posetiteli" />
+    <EntitySet Name="Sklad" EntityType="Self.Sklad" />
+    <EntitySet Name="Sotrudniki" EntityType="Self.Sotrudniki" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <AssociationSet Name="FK__Posetitel__Pokup__2D27B809" Association="Self.FK__Posetitel__Pokup__2D27B809">
+      <End Role="Exsponati" EntitySet="Exsponati" />
+      <End Role="Posetiteli" EntitySet="Posetiteli" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Sklad__ExponatID__286302EC" Association="Self.FK__Sklad__ExponatID__286302EC">
+      <End Role="Exsponati" EntitySet="Exsponati" />
+      <End Role="Sklad" EntitySet="Sklad" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sklad_Sotrudniki" Association="Self.FK_Sklad_Sotrudniki">
+      <End Role="Sotrudniki" EntitySet="Sotrudniki" />
+      <End Role="Sklad" EntitySet="Sklad" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

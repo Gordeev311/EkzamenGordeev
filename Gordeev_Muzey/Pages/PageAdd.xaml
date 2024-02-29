@@ -1,0 +1,41 @@
+﻿<Page x:Class="Gordeev_Muzey.Pages.PageAdd"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Gordeev_Muzey.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageAdd">
+
+    <Grid Background="Orange">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Тип" Grid.Row="0" Style="{StaticResource textblock}"/>
+        <TextBlock Text="Адрес" Grid.Row="1" Style="{StaticResource textblock}" />
+        <TextBlock Text="Площадь" Grid.Row="2" Style="{StaticResource textblock}"/>
+        <TextBlock Text="Цена" Grid.Row="3" Style="{StaticResource textblock}" />
+        <TextBlock Text="Владелец" Grid.Row="4" Style="{StaticResource textblock}"/>
+        <TextBox Grid.Row="0" Grid.Column="1" Style="{StaticResource texbox}" />
+        <TextBox Grid.Row="1" Grid.Column="1"  Style="{StaticResource texbox}"/>
+        <TextBox Grid.Row="2" Grid.Column="1"  Style="{StaticResource texbox}"/>
+        <TextBox Grid.Row="3" Grid.Column="1"  Style="{StaticResource texbox}"/>
+        <TextBox Grid.Row="4" Grid.Column="1"  Style="{StaticResource texbox}"/>
+        <Button Content="Сохранить" Grid.ColumnSpan="2" Grid.Row="6" x:Name="BtnSave" Click="BtnSave_Click"
+                Style="{StaticResource buttonSave}"/>
+
+    </Grid>
+</Page>
